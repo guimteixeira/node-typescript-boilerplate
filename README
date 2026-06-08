@@ -1,26 +1,395 @@
-# Node TypeScript Boilerplate
+# 🚀 Node TypeScript Boilerplate
 
-## Tecnologias
+Um boilerplate moderno para desenvolvimento de APIs e aplicações backend utilizando **Node.js**, **TypeScript**, **Express**, **Vitest**, **ESLint**, **Prettier** e **TSUP**.
 
-- Node.js
-- TypeScript
-- Express
-- ESLint
-- Prettier
-- Vitest
+Este projeto foi criado para servir como base para novos projetos, evitando a necessidade de configurar ferramentas essenciais do zero a cada aplicação.
 
-## Instalação
+---
 
+# ✨ Tecnologias
+
+### Runtime
+
+* Node.js
+
+### Linguagem
+
+* TypeScript
+
+### Framework HTTP
+
+* Express
+
+### Requisições HTTP
+
+* Axios
+
+### Segurança
+
+* Helmet
+
+### CORS
+
+* Cors
+
+### Variáveis de Ambiente
+
+* Dotenv
+
+### Testes
+
+* Vitest
+
+### Lint
+
+* ESLint (Flat Config)
+
+### Formatação
+
+* Prettier
+
+### Build
+
+* TSUP
+* TypeScript Compiler (TSC)
+
+---
+
+# 📂 Estrutura do Projeto
+
+```text
+src/
+├── config/
+├── controllers/
+├── middlewares/
+├── repositories/
+├── routes/
+├── services/
+├── types/
+├── utils/
+└── index.ts
+
+tests/
+
+dist/
+```
+
+### Descrição das Pastas
+
+| Pasta        | Responsabilidade           |
+| ------------ | -------------------------- |
+| config       | Configurações da aplicação |
+| controllers  | Recebe requisições HTTP    |
+| services     | Regras de negócio          |
+| repositories | Acesso a banco de dados    |
+| routes       | Definição das rotas        |
+| middlewares  | Middlewares da aplicação   |
+| types        | Tipagens personalizadas    |
+| utils        | Funções utilitárias        |
+| tests        | Testes automatizados       |
+| dist         | Build de produção          |
+
+---
+
+# 📦 Instalação
+
+Clone o projeto:
+
+```bash
+git clone https://github.com/seu-usuario/node-typescript-boilerplate.git
+```
+
+Entre na pasta:
+
+```bash
+cd node-typescript-boilerplate
+```
+
+Instale as dependências:
+
+```bash
 pnpm install
+```
 
-## Desenvolvimento
+---
 
+# ▶️ Executando em Desenvolvimento
+
+Inicia a aplicação com reload automático:
+
+```bash
 pnpm dev
+```
 
-## Testes
+Script utilizado:
 
-pnpm test
+```json
+"dev": "tsx watch src/index.ts"
+```
 
-## Build
+---
 
+# 🏗️ Build de Produção
+
+Executa:
+
+* Formatação do código
+* Compilação TypeScript
+* Bundle utilizando TSUP
+
+```bash
 pnpm build
+```
+
+Script:
+
+```json
+"build": "pnpm format && tsc --build tsconfig.build.json && tsup src"
+```
+
+Arquivos gerados:
+
+```text
+dist/
+```
+
+---
+
+# 🚀 Executando o Build
+
+Após gerar o build:
+
+```bash
+pnpm start
+```
+
+ou
+
+```bash
+node dist/index.js
+```
+
+---
+
+# 🧪 Testes
+
+Executar todos os testes:
+
+```bash
+pnpm test
+```
+
+Modo observação:
+
+```bash
+pnpm test:watch
+```
+
+Cobertura de testes:
+
+```bash
+pnpm test:coverage
+```
+
+Exemplo:
+
+```typescript
+import { describe, expect, it } from 'vitest';
+
+describe('sum', () => {
+  it('should add two numbers', () => {
+    expect(1 + 1).toBe(2);
+  });
+});
+```
+
+---
+
+# 🔍 Type Checking
+
+Executa apenas a verificação de tipos sem gerar build:
+
+```bash
+pnpm check
+```
+
+Script:
+
+```json
+"check": "tsc --noEmit"
+```
+
+---
+
+# 📏 ESLint
+
+Verificar problemas de código:
+
+```bash
+pnpm lint
+```
+
+Corrigir automaticamente:
+
+```bash
+pnpm lint:fix
+```
+
+Scripts:
+
+```json
+"lint": "eslint ./src",
+"lint:fix": "eslint ./src --fix"
+```
+
+---
+
+# 🎨 Prettier
+
+Formatar todos os arquivos TypeScript:
+
+```bash
+pnpm format
+```
+
+Configuração utilizada:
+
+```json
+{
+  "singleQuote": true,
+  "trailingComma": "all",
+  "tabWidth": 2,
+  "semi": true,
+  "printWidth": 120
+}
+```
+
+---
+
+# ⚙️ Scripts Disponíveis
+
+| Comando            | Descrição                         |
+| ------------------ | --------------------------------- |
+| pnpm dev           | Executa em modo desenvolvimento   |
+| pnpm build         | Gera build de produção            |
+| pnpm start         | Executa o build gerado            |
+| pnpm check         | Verifica tipos TypeScript         |
+| pnpm lint          | Executa ESLint                    |
+| pnpm lint:fix      | Corrige problemas automaticamente |
+| pnpm format        | Formata o código                  |
+| pnpm test          | Executa testes                    |
+| pnpm test:watch    | Executa testes em modo observação |
+| pnpm test:coverage | Gera cobertura de testes          |
+
+---
+
+# 🔒 Variáveis de Ambiente
+
+Crie um arquivo:
+
+```text
+.env
+```
+
+Exemplo:
+
+```env
+PORT=3000
+NODE_ENV=development
+```
+
+Carregamento:
+
+```typescript
+import 'dotenv/config';
+```
+
+ou
+
+```typescript
+import dotenv from 'dotenv';
+
+dotenv.config();
+```
+
+---
+
+# 🛡️ Segurança
+
+Este boilerplate já possui dependências para:
+
+### Helmet
+
+Proteção básica para aplicações Express.
+
+```typescript
+import helmet from 'helmet';
+
+app.use(helmet());
+```
+
+### CORS
+
+Controle de acesso entre origens.
+
+```typescript
+import cors from 'cors';
+
+app.use(cors());
+```
+
+---
+
+# 📌 Exemplo de Servidor
+
+```typescript
+import express from 'express';
+import helmet from 'helmet';
+import cors from 'cors';
+
+const app = express();
+
+app.use(helmet());
+app.use(cors());
+app.use(express.json());
+
+app.get('/', (_, response) => {
+  return response.json({
+    message: 'API running',
+  });
+});
+
+app.listen(3000, () => {
+  console.log('Server running');
+});
+```
+
+---
+
+# 📋 Requisitos
+
+* Node.js 22+
+* PNPM 11+
+
+Verificar versões:
+
+```bash
+node -v
+pnpm -v
+```
+
+---
+
+# 📄 Licença
+
+MIT
+
+---
+
+# 👨‍💻 Autor
+
+Guilherme Teixeira
+
+Software Developer
+
+Especialista em Node.js, TypeScript, React, AWS e Arquitetura de Sistemas.
