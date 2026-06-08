@@ -1,0 +1,26 @@
+# Node TypeScript Boilerplate
+
+## Tecnologias
+
+- Node.js
+- TypeScript
+- Express
+- ESLint
+- Prettier
+- Vitest
+
+## Instalação
+
+pnpm install
+
+## Desenvolvimento
+
+pnpm dev
+
+## Testes
+
+pnpm test
+
+## Build
+
+pnpm build
