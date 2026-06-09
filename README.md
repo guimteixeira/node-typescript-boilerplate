@@ -127,6 +127,8 @@ Script utilizado:
 "dev": "tsx watch src/index.ts"
 ```
 
+Obs.: o script `dev` usa o binário `tsx` (instalado como `devDependency`). Antes de executar, rode `pnpm install` para garantir que as dependências e o binário `tsx` estejam disponíveis.
+
 ---
 
 # 🏗️ Build de Produção
@@ -144,7 +146,7 @@ pnpm build
 Script:
 
 ```json
-"build": "pnpm format && tsc --build tsconfig.build.json && tsup src"
+"build": "pnpm format && tsc --build tsconfig.build.json && tsup --config tsup.config.ts"
 ```
 
 Arquivos gerados:
@@ -216,7 +218,7 @@ pnpm check
 Script:
 
 ```json
-"check": "tsc --noEmit"
+"check": "tsc --noEmit -p tsconfig.build.json"
 ```
 
 ---
@@ -858,7 +860,7 @@ Após clonar este boilerplate:
 
 # 📄 Licença
 
-MIT
+ISC
 
 ---
 
