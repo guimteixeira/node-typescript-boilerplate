@@ -834,7 +834,7 @@ Após clonar este boilerplate:
 
 1. **Configure seu projeto:**
    ```bash
-   git clone <seu-repositório>
+   git clone https://github.com/guimteixeira/node-typescript-boilerplate.git
    cd node-typescript-boilerplate
    pnpm install
    ```
