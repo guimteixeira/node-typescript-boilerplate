@@ -12,20 +12,13 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "build": "pnpm format && tsc --build tsconfig.build.json && tsup --config tsup.config.ts",
-    "start:dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
     "dev": "tsx watch src/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "11.5.2",
-      "onFail": "download"
-    }
-  },
+  "packageManager": "pnpm@11.5.2",
   "type": "module",
   "dependencies": {
     "axios": "^1.17.0",
@@ -48,6 +41,7 @@
     "globals": "^17.6.0",
     "prettier": "^3.8.3",
     "tsup": "^8.5.1",
+    "tsx": "^4.22.4",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.60.1",
     "vitest": "^4.1.8"
